@@ -1,28 +1,41 @@
 import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { List, ListItem } from "react-onsenui";
 
-export default class S02 extends Component {
-  constructor(props) {
-    super(props);
-  }
+import { updateCanto } from "./actions";
 
-  componentWillMount() {
-    this.liClicked = [];
-    for (let i = 0; i < 10; i++) {
-      this.props.list.push(
-        <li className="ss" key={i}>
-          {Math.round(Math.random())}
-        </li>
-      );
-    }
-  }
-
+class S02 extends Component {
   render() {
-    console.log(this.props.list);
+    const mapItems = this.props.list.map((item, i) => (
+      <ListItem key={i}>
+        <span
+          onClick={() => {
+            this.props.updateCanto(this.props.list, i);
+          }}
+          className={item.css}
+        >
+          {item.value}
+        </span>
+      </ListItem>
+    ));
+
     return (
       <div>
         <h2>O canto dos pássaros sem voz</h2>
-        <ul>{this.props.list}</ul>
+        <List>{mapItems}</List>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { list: state.S02.list };
+};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ updateCanto }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(S02);

@@ -2,3 +2,16 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.clickable {
+  cursor: pointer;
+  padding: 7px 45px;
+  background: #333;
+  color: #eee;
+  border-radius: 4px;
+}
+
+.clickable.active {
+  background: #545454;
+  box-shadow: inset 0px 0px 12px #111;
+}
