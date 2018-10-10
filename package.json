@@ -1,7 +1,7 @@
 {
-  "name": "new",
+  "name": "enigmator",
   "version": "1.0.0",
-  "description": "",
+  "description": "puzzle simple game",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
